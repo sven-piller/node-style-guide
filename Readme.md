@@ -239,9 +239,15 @@ if (a == '') {
 
 ## Use multi-line ternary operator
 
-The ternary operator should not be used on a single line. Split it up into multiple lines instead.
+The ternary operator should not be used on multiple lines.
 
 *Right:*
+
+```js
+var foo = (a === b) ? 1 : 2;
+```
+
+*Wrong:*
 
 ```js
 var foo = (a === b)
@@ -249,10 +255,26 @@ var foo = (a === b)
   : 2;
 ```
 
+And if it gets too complex for a single line, use an if statement instead. More lines, but more readable.
+
 *Wrong:*
 
 ```js
-var foo = (a === b) ? 1 : 2;
+
+var foo = (((a.losing() + 34) / 12) % ((b.reallyLosing() * 2) + 12) === 0) ? bar.crazy() : bar.thisIsInsane();
+```
+
+*Right:*
+
+```js
+var foo;
+var sensibleName = (a.winning() + 34) / 12;
+var anotherGoodName = (b.winningToo() * 2) + 12;
+if (sensibleName % anotherGoodName === 0) {
+  foo = bar.sane();
+} else {
+  foo = bar.thisIsNotCrazy();
+}
 ```
 
 ## Do not extend built-in prototypes
